@@ -13,7 +13,7 @@ MLOps (machine learning operations) is a must-know skill for many data professio
 
 ## Modules
 
-### [Module 1: Introduction](01-intro)
+### [Module 1: Introduction](https://github.com/Chrmorod/mlops-zoomcamp/tree/main/01-intro)
 - What is MLOps?
 - MLOps maturity model
 - NY Taxi dataset (our running example)
@@ -21,7 +21,7 @@ MLOps (machine learning operations) is a must-know skill for many data professio
 - Course structure & environment setup
 - Homework
 
-### [Module 2: Experiment Tracking & Model Management](02-experiment-tracking)
+### [Module 2: Experiment Tracking & Model Management](https://github.com/DataTalksClub/mlops-zoomcamp/tree/main/02-experiment-tracking)
 - Introduction to experiment tracking
 - MLflow basics
 - Model saving and loading
@@ -29,32 +29,32 @@ MLOps (machine learning operations) is a must-know skill for many data professio
 - Hands-on MLflow exercises
 - Homework
 
-### [Module 3: Orchestration & ML Pipelines](03-orchestration)
+### [Module 3: Orchestration & ML Pipelines](https://github.com/DataTalksClub/mlops-zoomcamp/tree/main/03-orchestration)
 
 - Workflow orchestration
 - Homework
 
-### [Module 4: Model Deployment](04-deployment)
+### [Module 4: Model Deployment](https://github.com/DataTalksClub/mlops-zoomcamp/tree/main/04-deployment)
 - Deployment strategies: online (web, streaming) vs. offline (batch)
 - Deploying with Flask (web service)
 - Streaming deployment with AWS Kinesis & Lambda
 - Batch scoring for offline processing
 - Homework
 
-### [Module 5: Model Monitoring](05-monitoring)
+### [Module 5: Model Monitoring](https://github.com/DataTalksClub/mlops-zoomcamp/tree/main/05-monitoring)
 - Monitoring ML-based services
 - Web service monitoring with Prometheus, Evidently, and Grafana
 - Batch job monitoring with Prefect, MongoDB, and Evidently
 - Homework
 
-### [Module 6: Best Practices](06-best-practices)
+### [Module 6: Best Practices](https://github.com/DataTalksClub/mlops-zoomcamp/tree/main/06-best-practices)
 - Unit and integration testing
 - Linting, formatting, and pre-commit hooks
 - CI/CD with GitHub Actions
 - Infrastructure as Code (Terraform)
 - Homework
 
-### [Final Project](07-project/)
+### [Final Project](https://github.com/DataTalksClub/mlops-zoomcamp/tree/main/07-project)
 - End-to-end project integrating all course concepts
 
 ## Community & Support
