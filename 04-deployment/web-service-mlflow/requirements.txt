@@ -1,0 +1,6 @@
+flask
+click
+gunicorn
+waitress
+numpy
+scipy

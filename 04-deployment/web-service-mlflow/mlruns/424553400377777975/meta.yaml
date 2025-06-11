@@ -1,0 +1,6 @@
+artifact_location: file:///C:/Users/Christian/Documents/04-deployment/web-service-mlflow/mlruns/424553400377777975
+creation_time: 1749665034427
+experiment_id: '424553400377777975'
+last_update_time: 1749665034427
+lifecycle_stage: active
+name: green-taxi-duration
