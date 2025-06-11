@@ -13,7 +13,7 @@ MLOps (machine learning operations) is a must-know skill for many data professio
 
 ## Modules
 
-### [Module 1: Introduction](https://github.com/Chrmorod/mlops-zoomcamp/tree/main/01-intro)
+### [Module 1: Introduction](https://github.com/DataTalksClub/mlops-zoomcamp/tree/main/01-intro)
 - What is MLOps?
 - MLOps maturity model
 - NY Taxi dataset (our running example)
