@@ -1,0 +1,21 @@
+aws configure
+AWS Access Key ID [None]: test
+AWS Secret Access Key [None]: test
+Default region name [None]: eu-west-1
+Default output format [None]: json
+
+Christian@Christian MINGW64 ~/Documents/06-best-practices
+$ aws --endpoint-url=http://localhost:4566 s3 mb s3://nyc-duration --region eu-west-1
+make_bucket: nyc-duration
+
+Christian@Christian MINGW64 ~/Documents/06-best-practices
+$ aws s3 ls
+
+An error occurred (InvalidAccessKeyId) when calling the ListBuckets operation: The AWS Access Key Id you provided does not exist in our records.
+
+Christian@Christian MINGW64 ~/Documents/06-best-practices
+$ aws --endpoint-url=http://localhost:4566 s3 ls
+2025-06-25 21:06:05 nyc-duration
+
+Christian@Christian MINGW64 ~/Documents/06-best-practices
+$
