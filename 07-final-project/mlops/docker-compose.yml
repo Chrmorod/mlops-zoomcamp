@@ -1,0 +1,105 @@
+version: '3.7'
+
+volumes:
+  grafana_data:
+
+networks:
+  front-tier:
+  back-tier:
+  app-network:
+
+services:
+  magic-platform:
+    env_file:
+      - .env.dev
+    environment:
+      - STOCK=${STOCK}
+      - YEAR_BACK=${YEAR_BACK}
+    build:
+      context: .
+    command: /app/run_app.sh mage start $PROJECT_NAME
+    ports:
+      - "6789:6789"
+    volumes:
+      - .:/${MAGE_CODE_PATH}
+      - ~/.mage_data:/${MAGE_CODE_PATH}/mage_data
+      - ~/.aws:/root/.aws
+      - ~/.ssh:/root/.ssh:ro
+      - ~/.gitconfig:/root/.gitconfig:ro
+    restart: on-failure
+    networks:
+      - app-network
+    depends_on:
+      - magic-database
+      - mlflow
+    stdin_open: true
+    tty: true
+
+  magic-database:
+    image: pgvector/pgvector:0.6.0-pg16
+    env_file:
+      - .env.dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - ~/.postgres/data:/var/lib/postgresql/data
+      - ./scripts/database:/docker-entrypoint-initdb.d
+    restart: always
+    networks:
+      - app-network
+
+  mlflow:
+    build:
+      context: .
+      dockerfile: mlflow.dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://0.0.0.0:5000
+    command: >
+      mlflow server --host 0.0.0.0 --port 5000 
+      --backend-store-uri sqlite:////mlflow_data/mlflow.db
+      --default-artifact-root /mlflow/artifacts
+    volumes:
+      - ./mlflow_data:/mlflow_data 
+      - ./mlruns:/mlflow/artifacts
+    networks:
+      - app-network
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+    ports:
+      - "5353:5353" 
+    networks:
+      - back-tier
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8081:8080"
+    networks:
+      - back-tier
+      - front-tier
+      - app-network
+
+  grafana:
+    image: grafana/grafana
+    user: "472"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./mlflow_data:/mlflow_data
+      - ./expected_prices_dashboard.json:/etc/grafana/provisioning/dashboards/expected_prices_dashboard.json:ro
+      - ./config/grafana_datasources.yaml:/etc/grafana/provisioning/datasources/mydatasource.yaml:ro
+      - grafana_data:/var/lib/grafana
+    environment:
+    - GF_INSTALL_PLUGINS=frser-sqlite-datasource
+    networks:
+      - back-tier
+      - front-tier
+    restart: always
