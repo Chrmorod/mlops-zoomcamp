@@ -1,3 +1,4 @@
+[Go to the 2nd attempt](https://github.com/Chrmorod/Project_Final_Stock_Prices_Prediction) 
 # 📈 Stock Price Prediction Pipeline
 
 This project implements a modular and scalable architecture for **30-day stock price prediction**, using various modeling techniques and modern tools for orchestration, traceability, and visualization.
